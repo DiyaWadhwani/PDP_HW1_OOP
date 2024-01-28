@@ -38,7 +38,6 @@ async function runMainFunction() {
           const userPrompt = await askQuestion("Enter a prompt: ");
           const userResponse = await askQuestion("Enter a response: ");
           myPrompter.recordChatGPTInteraction(userPrompt, userResponse);
-          console.log("\nSuccessfully added your ChatGPT Interaction\n");
           break;
         }
 
@@ -51,7 +50,6 @@ async function runMainFunction() {
             userResponse,
             userImageURL
           );
-          console.log("\nSuccessfully added your Dalle Interaction\n");
           break;
         }
 

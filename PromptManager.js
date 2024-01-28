@@ -7,11 +7,21 @@ export class PromptManager {
   recordChatGPTInteraction(prompt, response) {
     const newInteraction = new ChatGPTInteraction(prompt, response);
     this.listOfInteractions.push(newInteraction);
+    console.log("\nSuccessfully added your ChatGPT Interaction\n");
   }
 
   recordDalleInteraction(prompt, response, imageURL) {
-    const newInteraction = new DalleInteraction(prompt, response, imageURL);
-    this.listOfInteractions.push(newInteraction);
+    //checking for image URL
+    const urlPattern = /^(https?:\/\/)?([\w.-]+)\.([a-z]{2,})(\/\S*)?$/i;
+    if (urlPattern.test(imageURL)) {
+      const newInteraction = new DalleInteraction(prompt, response, imageURL);
+      this.listOfInteractions.push(newInteraction);
+      console.log("\nSuccessfully added your Dalle Interaction\n");
+    } else {
+      console.log(
+        "\nInvalid imageURL entered. Could not add new Dalle Interaction. Please try again"
+      );
+    }
   }
 
   showAllInteractions() {
