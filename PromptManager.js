@@ -27,12 +27,20 @@ export class PromptManager {
   }
 
   removeInteractionByID(interactionID) {
-    if (this.listOfInteractions.length === 0) {
-      console.log("Try adding a new interaction and then removing it!");
+    if (interactionID <= this.listOfInteractions.length) {
+      if (this.listOfInteractions.length === 0) {
+        console.log("Try adding a new interaction and then removing it!");
+      } else {
+        console.log("\nList of Interactions:");
+        this.listOfInteractions.splice(interactionID - 1, 1);
+        console.log(
+          `Successfully removed interaction with ID ${interactionID}`
+        );
+      }
     } else {
-      console.log("\nList of Interactions:");
-      this.listOfInteractions.splice(interactionID - 1, 1);
-      console.log(`Successfully removed interaction with ID ${interactionID}`);
+      console.log(
+        "Please enter a valid ID. No interaction exists with this ID"
+      );
     }
   }
 }
